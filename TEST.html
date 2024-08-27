@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<div id ="box">
+    <p id="clock">text</p>
+    <div id="but" onclick="start()"> </div>
+</div>
+
+
+<style>
+    #but{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:500px;
+        height:500px;
+        object-fit: cover;
+        background-image:url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibvdef7faAn3N77dDDPglM8Sjg1CjUvnNJZlqXZS-9QFQVJWdQy0AkVYtBRy7Vn6TYrxIc8oH9TAX9qHv2EJADM_fET2hJhfgw8PQoV1G8-MSH-_ERoVLQWQdvUtKLpkrde7FPyRPTeVxU/s800/yaruki_moeru_man.png);
+    }
+    #box{
+        color:black;
+        position : relative;
+        height:100vh;
+    }
+    #clock{
+        position:absolute;
+        top:15%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        font-size:300px;
+    }
+</style>
+<script>
+    let timerStart=false;
+    let onof=true;
+    let min = 10;
+    let sec = 0;
+    let finish =false;
+    function start(){
+        setInterval(count,1000);
+        document.getElementById("but").style.display="none";
+    }
+    function count(){
+        if(sec > 0){
+            //secが０じゃないとき
+            sec--;
+        }else{
+            if(min >0){
+                min--
+                sec=59;
+            }else{
+                finish=true;
+            }
+        }
+        if(finish==false){
+            document.getElementById("clock").textContent=min +":"+sec;
+        }else{
+            document.getElementById("clock").textContent="おわり";
+        }
+        if(min == 0){
+            if(onof== true ){
+                onof=false;
+                document.getElementById("clock").style.color="red";
+            }else{
+                onof=true;
+                document.getElementById("clock").style.color="black";
+            }
+            
+        }
+        
+    }
+    
+    function aaa(){
+        if(timerStart==true){
+        setInterval(count,1000);
+    }else{
+        
+    }
+    }
+    
+    
+    count()
+    
+</script>
